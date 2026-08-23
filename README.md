@@ -9,13 +9,14 @@ Declutter the DeepSeek Harness settings panel: with more plugins installed, the 
 ## Features
 
 - **One group row, right under the system settings** — `通用设置 / Models / Plugins / Agent presets` stay flat; everything else (plugins, extensions, extra pages) folds under `Plugin entries (N) ▾`.
-- **Fold toggle** — a switch in **Settings → General** (`折叠第三方插件入口`) turns the whole folding behavior on/off: off restores the plain native nav with every entry flat.
+- **Fold toggle** — a switch at the top of the **Groups** page (`折叠第三方插件入口`) turns the whole folding behavior on/off: off restores the plain native nav with every entry flat.
 - **Bookmark-style custom groups** — create named groups (like bookmark folders), move any settings entry into a group, and expand/collapse each group in the nav independently. A **Groups** page in the Settings panel manages everything: create, rename, delete groups, and move entries in/out.
 - **One-click expand/collapse** — click a group row to unfold its entries below it; click again to fold them back. Ungrouped entries stay under the `Plugin entries (N) ▾` row.
 - **Persistent** — group configuration and the fold toggle are stored in `localStorage` (`dsh.settingsNavFold.v1`), survives restarts.
 - **Auto-updating** — counts and fold positions are recomputed from the live `settings.section` ledger, so entries appear/disappear as plugins register or unregister their settings pages. No configuration.
 - **Current section never disappears** — the active plugin page stays visible even while folded.
-- **Auto classification** — a mode switch (AI auto / manual) plus an optional AI model config (OpenAI-compatible base URL, API key, model): with AI mode on, newly installed plugins are grouped automatically using third-party market categories first, then your AI model for plugins the market does not cover.
+- **Auto classification** — a mode switch (AI auto / manual): with AI mode on, newly installed plugins are grouped automatically through three fallback layers — **third-party market categories → local name-based heuristic rules → your AI model** — so plugins are grouped even when the market misses them and no AI is configured.
+- **AI model config made easy** — model dropdown with presets (DeepSeek / OpenAI / Qwen / GLM / Kimi / Doubao): picking a preset model auto-fills its provider API URL, the URL+key auto-fetch the models available on your account, a **Test config** button verifies the whole setup with one request, and everything is **saved automatically on input** (no save button required).
 - **Localized** — follows the UI locale (中文 / English).
 
 ## Install
@@ -34,11 +35,16 @@ Restart `dsh` (the host half must load), then refresh the browser page. Open the
 
 Everything lives in the Settings panel (`设置`):
 
-1. **Fold toggle** — open **General** (`通用设置`), the first row is `折叠第三方插件入口 / Fold third-party plugin entries`. On (default): plugin entries fold under the group rows; off: the nav goes back to plain native with every entry flat. The switch state is remembered across restarts.
+1. **Fold toggle** — open **Groups** (`分组管理`), the switch at the top is `折叠第三方插件入口 / Fold third-party plugin entries`. On (default): plugin entries fold under the group rows; off: the nav goes back to plain native with every entry flat. The switch state is remembered across restarts.
 
-2. **Group rows in the nav** — with the toggle on, the nav shows the core entries, then a `Plugin entries (N) ▾` row (and any custom group rows). Click a row to expand/collapse its entries below it.
+2. **Group rows in the nav** — with the toggle on, the nav shows the core entries, then a `Plugin entries (N) ▾` row (and any custom group rows). Click a row to expand/collapse its entries below it. The **Groups** page entry sits at the bottom of the nav.
 
-3. **Bookmark-style groups** — open **Groups** (`分组管理`) in the nav:
+3. **Auto classification** — in the **Groups** page, turn on the **Auto classify** switch (AI auto / manual), then configure your AI model:
+   - pick a preset model from the dropdown (the provider API URL is filled in automatically), enter your API key, confirm the URL, and hit **Test config** to verify;
+   - click **Classify ungrouped plugins now** — market tags are used first, then name-based rules, then your AI model;
+   - everything is saved automatically as you type.
+
+4. **Bookmark-style groups** — in the **Groups** page:
    - type a name and hit **New group** to create a group;
    - in the **Ungrouped** section, pick a group from each entry's dropdown to move it in;
    - inside a group card, use **Rename** / **Delete** / **Remove** to manage it (deleting a group moves its entries back to Ungrouped).
