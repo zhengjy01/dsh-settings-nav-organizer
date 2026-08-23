@@ -1,7 +1,7 @@
 {
   "name": "dsh-settings-nav-organizer",
   "description": "Fold plugin settings entries under one collapsible group row in the DSH settings panel nav.",
-  "version": "1.5.0",
+  "version": "1.5.1",
   "entry": {
     "name": "dsh-settings-nav-organizer",
     "inject": []
