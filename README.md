@@ -15,6 +15,7 @@ Declutter the DeepSeek Harness settings panel: with more plugins installed, the 
 - **Persistent** — group configuration and the fold toggle are stored in `localStorage` (`dsh.settingsNavFold.v1`), survives restarts.
 - **Auto-updating** — counts and fold positions are recomputed from the live `settings.section` ledger, so entries appear/disappear as plugins register or unregister their settings pages. No configuration.
 - **Current section never disappears** — the active plugin page stays visible even while folded.
+- **Auto classification** — a mode switch (AI auto / manual) plus an optional AI model config (OpenAI-compatible base URL, API key, model): with AI mode on, newly installed plugins are grouped automatically using third-party market categories first, then your AI model for plugins the market does not cover.
 - **Localized** — follows the UI locale (中文 / English).
 
 ## Install
