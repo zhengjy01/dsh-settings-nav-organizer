@@ -38,7 +38,7 @@ Everything lives in the Settings panel (`设置`):
 
 1. **Fold toggle** — open **Groups** (`分组管理`), the switch at the top is `折叠第三方插件入口 / Fold third-party plugin entries`. On (default): plugin entries fold under the group rows; off: the nav goes back to plain native with every entry flat. The switch state is remembered across restarts.
 
-2. **Group rows in the nav** — with the toggle on, the nav keeps the official entries (`通用设置 / Models / Plugins / Agent presets`) flat at the top, then shows a `Plugin entries (N) ▾` row (and any custom group rows). Click a row to expand/collapse its entries below it. The **Groups** page entry sits at the bottom of the nav.
+2. **Group rows in the nav** — with the toggle on, the nav keeps the official entries (`通用设置 / Models / Plugins / Agent presets`, plus the **Plugin manager** page) flat at the top, then shows a `Plugin entries (N) ▾` row (and any custom group rows). Click a row to expand/collapse its entries below it. The **Groups** page entry sits at the bottom of the nav.
 
 3. **Auto classification** — in the **Groups** page, turn on the **Auto classify** switch (AI auto / manual), then configure your AI model:
    - pick a preset model from the dropdown (the provider API URL is filled in automatically), enter your API key, confirm the URL, and hit **Test config** to verify;
