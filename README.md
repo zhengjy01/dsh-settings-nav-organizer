@@ -9,6 +9,8 @@ Declutter the DeepSeek Harness settings panel: with more plugins installed, the 
 ## Features
 
 - **One group row, right under the system settings** — `通用设置 / Models / Plugins / Agent presets` stay flat; everything else (plugins, extensions, extra pages) folds under `Plugin entries (N) ▾`.
+- **Official settings grouped at the very top** — the DeepSeek Harness entries (General / Models / Plugins / Agent presets) are collected under a pinned `DeepSeek Harness 设置 (N) ▴` group row at the very top of the nav, so the built-in settings stay reachable even with dozens of plugins installed. Click it to fold/unfold the official entries.
+- **Scrollable nav** — when there are many entries, the settings sidebar scrolls instead of clipping entries with no scrollbar.
 - **Fold toggle** — a switch at the top of the **Groups** page (`折叠第三方插件入口`) turns the whole folding behavior on/off: off restores the plain native nav with every entry flat.
 - **Bookmark-style custom groups** — create named groups (like bookmark folders), move any settings entry into a group, and expand/collapse each group in the nav independently. A **Groups** page in the Settings panel manages everything: create, rename, delete groups, and move entries in/out.
 - **One-click expand/collapse** — click a group row to unfold its entries below it; click again to fold them back. Ungrouped entries stay under the `Plugin entries (N) ▾` row.
@@ -37,7 +39,7 @@ Everything lives in the Settings panel (`设置`):
 
 1. **Fold toggle** — open **Groups** (`分组管理`), the switch at the top is `折叠第三方插件入口 / Fold third-party plugin entries`. On (default): plugin entries fold under the group rows; off: the nav goes back to plain native with every entry flat. The switch state is remembered across restarts.
 
-2. **Group rows in the nav** — with the toggle on, the nav shows the core entries, then a `Plugin entries (N) ▾` row (and any custom group rows). Click a row to expand/collapse its entries below it. The **Groups** page entry sits at the bottom of the nav.
+2. **Group rows in the nav** — with the toggle on, the nav shows a pinned `DeepSeek Harness 设置 (N) ▴` row at the very top (fold/unfold the official General / Models / Plugins / Agent presets entries), then a `Plugin entries (N) ▾` row (and any custom group rows). Click a row to expand/collapse its entries below it. The **Groups** page entry sits at the bottom of the nav.
 
 3. **Auto classification** — in the **Groups** page, turn on the **Auto classify** switch (AI auto / manual), then configure your AI model:
    - pick a preset model from the dropdown (the provider API URL is filled in automatically), enter your API key, confirm the URL, and hit **Test config** to verify;

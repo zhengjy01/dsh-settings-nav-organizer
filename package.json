@@ -1,6 +1,6 @@
 {
   "name": "dsh-settings-nav-organizer",
-  "version": "1.6.15",
+  "version": "1.6.16",
   "description": "Organize the DSH settings panel nav: fold third-party plugin entries under collapsible group rows, with bookmark-style custom groups and a fold toggle in General settings.",
   "type": "module",
   "main": "lib/index.js",
