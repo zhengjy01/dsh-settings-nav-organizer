@@ -18,6 +18,7 @@ Declutter the DeepSeek Harness settings panel: with more plugins installed, the 
 - **Current section never disappears** — the active plugin page stays visible even while folded.
 - **Auto classification** — a mode switch (AI auto / manual): with AI mode on, newly installed plugins are grouped automatically through three fallback layers — **third-party market categories → local name-based heuristic rules → your AI model** — so plugins are grouped even when the market misses them and no AI is configured.
 - **AI model config made easy** — model dropdown with presets (DeepSeek / OpenAI / Qwen / GLM / Kimi / Doubao): picking a preset model auto-fills its provider API URL, the URL+key auto-fetch the models available on your account, a **Test config** button verifies the whole setup with one request, and everything is **saved automatically on input** (no save button required).
+- **Idle plugin auto-pruner** — a new switch on the **Groups** page scans each plugin's tool-call history, flags plugins unused beyond an idle threshold (default 30 days), and lets you **preview and one-click clean** them (with a confirmation step). Core DSH, this plugin and the core UI bundle are auto-protected and never listed; plugins without detectable tools can still be checked manually.
 - **Localized** — follows the UI locale (中文 / English).
 
 ## Install
