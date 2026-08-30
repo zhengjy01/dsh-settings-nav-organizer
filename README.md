@@ -9,6 +9,8 @@ Declutter the DeepSeek Harness settings panel: with more plugins installed, the 
 ## Features
 
 - **One group row, right under the system settings** — `通用设置 / Models / Plugins / Agent presets` stay flat at the top; everything else (plugins, extensions, extra pages) folds under `Plugin entries (N) ▾`.
+- **Instant search** — a search box pinned at the top of the settings nav filters every entry by name (and plugin id) as you type; matches are highlighted and their groups are auto-expanded, and clearing the search restores the previous fold/group layout.
+
 - **Scrollable nav** — when there are many entries, the settings sidebar scrolls instead of clipping entries with no scrollbar.
 - **Fold toggle** — a switch at the top of the **Groups** page (`折叠第三方插件入口`) turns the whole folding behavior on/off: off restores the plain native nav with every entry flat.
 - **Bookmark-style custom groups** — create named groups (like bookmark folders), move any settings entry into a group, and expand/collapse each group in the nav independently. A **Groups** page in the Settings panel manages everything: create, rename, delete groups, and move entries in/out.
