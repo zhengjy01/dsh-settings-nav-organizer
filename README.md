@@ -75,6 +75,11 @@ Everything lives in the Settings panel (`设置`):
    - click **Classify ungrouped plugins now** — market tags are used first, then name-based rules, then your AI model;
    - everything is saved automatically as you type.
 
+   > **Screenshot slot 4 — auto classification result.** Capture the Groups page
+   > right after clicking **Classify ungrouped plugins now** (entries moved into
+   > groups). Save as
+   > `docs/images/dsh-settings-nav-organizer-4-classify.png`.
+
 4. **Bookmark-style groups** — in the **Groups** page:
    - type a name and hit **New group** to create a group;
    - in the **Ungrouped** section, pick a group from each entry's dropdown to move it in;
