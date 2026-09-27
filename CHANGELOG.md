@@ -8,6 +8,25 @@
 
 <!-- 日常提交的内容会累积到这里；发布时脚本会在本行下方插入新版本段落 -->
 
+## [1.7.2] - 2026-09-27
+
+### 修复 (Fixed)
+
+- **闲置插件扫描判据漏 v3/v4，约 60% 会话日志被静默跳过**：`lib/index.js` 的会话遍历用字面量 `e.name === "session.jsonl.zstd"`，而 DSH 现网写入 `session.v3.jsonl.zstd`（0.1.5）/ `session.v4.jsonl.zstd`（0.1.7）——本机 945 个日志里 v3 501 + v4 75 被跳过（≈61%），「闲置 30 天」的使用统计因此**低估插件使用、误判闲置**（可能把在用的插件列为可弃）。判据改为与核心 `@deepseek-ai/dsh-session-format` 同源的 `/^session(?:\.v([1-9][0-9]*))?\.jsonl(\.zstd)?$/`，v0/v3/v4… 通吃。
+- **桌面端最小 PATH 下 `zstd` spawn ENOENT**：Finder 启动的 Electron 宿主继承 launchd 的 `/usr/bin:/bin:/usr/sbin:/sbin`，裸调 `zstd` 会失败并被逐文件 catch 静默吞掉（该文件只是「不算」，不报错）。改为 `resolveExecutable()` 解析绝对路径（PATH + `DSH_EXTRA_BIN_DIRS` + `/opt/homebrew/bin` / `/usr/local/bin` / `~/.local/bin`）；裸 `.jsonl` 直接读。
+
+### 其它 (Changed)
+
+- 补齐生态元数据：`dsh.engines.dsh = ">=0.1.5-rc.1"`、`engines.node = "^22.19.0 || >=24.0.0"`、`peerDependencies`（`@deepseek-ai/dsh-host-webserver` + `react`）；`files` 的 `lib/` 修正为 `lib`。
+- 接入发布前门禁：`scripts/portability.mjs` + `PORTABILITY-SOP.md`，`package.json` 新增 `verify` / `verify:full` / `verify:quick`（健康路由 `/api/dsh-settings-nav-organizer/list`）与 `release` 脚本；新增本 CHANGELOG（回填 1.6.15–1.7.1）。
+
+### 兼容性 (Compatibility)
+
+- DSH：`>=0.1.5-rc.1`
+- Node：`^22.19.0 || >=24.0.0`
+- peer：`@deepseek-ai/dsh-host-webserver@^0.1.0-rc.6 || ^0.1.1-rc.1 || ^0.1.2-alpha.1 || ^0.1.5-rc.1`、`react@^18.2.0`
+- 发布前可移植性验证：✅ 通过（隔离 `DSH_HOME` + tarball 安装 + 15s 稳定性观察）
+
 ## [1.7.1] - 2026-08-30
 
 ### 新增 (Added)
