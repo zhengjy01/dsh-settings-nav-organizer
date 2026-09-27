@@ -29,7 +29,8 @@
     "cordis.patch.yml",
     "README.md",
     "README.zh.md",
-    "LICENSE"
+    "LICENSE",
+    "CHANGELOG.md"
   ],
   "keywords": [
     "dsh",
@@ -44,5 +45,12 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/zhengjy01/dsh-settings-nav-organizer.git"
+  },
+  "scripts": {
+    "verify": "node scripts/portability.mjs --health /api/dsh-settings-nav-organizer/list",
+    "verify:full": "node scripts/portability.mjs --health /api/dsh-settings-nav-organizer/list --stability 30",
+    "verify:quick": "node scripts/portability.mjs --skip-audit --stability 5 --health /api/dsh-settings-nav-organizer/list",
+    "release": "node scripts/release.mjs",
+    "release:check": "node scripts/release.mjs --check"
   }
 }
