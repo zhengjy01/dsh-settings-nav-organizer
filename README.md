@@ -25,21 +25,48 @@ Declutter the DeepSeek Harness settings panel: with more plugins installed, the 
 
 ## Install
 
-```sh
-# 方式一：npm 包（推荐，国内网络更稳定）
-dsh plugin --profile web add dsh-settings-nav-organizer
+1. Add the plugin to your profile:
 
-# 方式二：GitHub 仓库
-dsh plugin --profile web add github:zhengjy01/dsh-settings-nav-organizer
-```
+   ```sh
+   # from npm (recommended — more stable from mainland networks)
+   dsh plugin --profile web add dsh-settings-nav-organizer
 
-Restart `dsh` (the host half must load), then refresh the browser page. Open the Settings panel (gear icon at the sidebar foot).
+   # or from GitHub
+   dsh plugin --profile web add github:zhengjy01/dsh-settings-nav-organizer
+   ```
+
+   Expected: the command prints the resolved package and records it in that
+   profile's `dsh.profile.bundles`.
+
+   > **Screenshot slot 1 — install output.** Capture the terminal right after the
+   > command, last ~10 lines (package + profile). Redact your username / home
+   > path. Save as `docs/images/dsh-settings-nav-organizer-1-install.png`, then
+   > replace this block with
+   > `![Install output](docs/images/dsh-settings-nav-organizer-1-install.png)`.
+
+2. Restart `dsh` (the host half must load), then refresh the browser page.
+
+   Expected: the sidebar nav still lists the official entries, now followed by
+   the group rows.
+
+3. Open Settings (gear icon at the sidebar foot) → **Groups** (`分组管理`).
+
+   Expected: the fold toggle and the group management UI are there.
+
+   > **Screenshot slot 2 — folded nav + Groups page.** Capture the sidebar with
+   > plugin entries folded under `Plugin entries (N) ▾`, plus the Groups page
+   > header. Redact plugin names you consider private. Save as
+   > `docs/images/dsh-settings-nav-organizer-2-folded-nav.png`.
 
 ## Usage
 
 Everything lives in the Settings panel (`设置`):
 
 1. **Fold toggle** — open **Groups** (`分组管理`), the switch at the top is `折叠第三方插件入口 / Fold third-party plugin entries`. On (default): plugin entries fold under the group rows; off: the nav goes back to plain native with every entry flat. The switch state is remembered across restarts.
+
+   > **Screenshot slot 3 — the toggle, both states.** Capture the nav with the
+   > toggle on and off. Save as
+   > `docs/images/dsh-settings-nav-organizer-3-toggle.png`.
 
 2. **Group rows in the nav** — with the toggle on, the nav keeps the official entries (`通用设置 / Models / Plugins / Agent presets`, plus the **Plugin manager** page) flat at the top, followed by the **Groups** page, then a `Plugin entries (N) ▾` row (and any custom group rows). Click a row to expand/collapse its entries below it.
 
@@ -62,6 +89,18 @@ The settings nav list is rendered by the shipped panel and is not a slot, so the
 3. marks plugin buttons with `data-snav-plugin` / `data-snav-group` and drives visibility via a small stylesheet (the active `aria-current` row stays visible);
 4. follows the ledger and panel re-renders with a scoped `MutationObserver` (with a storm watchdog), so the group stays correct as plugins come and go;
 Everything is owned by the plugin fiber: styles, subscriptions, the observer, and the injected rows are removed when the plugin is stopped or uninstalled.
+
+### Screenshots to add
+
+| # | Where | What it shows | How to capture | Suggested filename |
+| --- | --- | --- | --- | --- |
+| 1 | Install | Install output (package + profile) | Terminal right after step 1, last ~10 lines; redact home path | `docs/images/dsh-settings-nav-organizer-1-install.png` |
+| 2 | Install | Folded nav + Groups page | Sidebar with entries folded under `Plugin entries (N) ▾`, plus the Groups page header | `docs/images/dsh-settings-nav-organizer-2-folded-nav.png` |
+| 3 | Usage | Fold toggle on/off | Same nav with the toggle on and off | `docs/images/dsh-settings-nav-organizer-3-toggle.png` |
+| 4 | Usage | Auto classification result | Groups page right after "Classify ungrouped plugins now" | `docs/images/dsh-settings-nav-organizer-4-classify.png` |
+
+After adding the images, re-run `npm pack --dry-run` and the portability gate
+(`npm run verify`) — the README is part of the published tarball.
 
 ## Uninstall
 

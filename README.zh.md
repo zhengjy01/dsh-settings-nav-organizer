@@ -22,21 +22,42 @@
 
 ## 安装
 
-```sh
-# 方式一：npm 包（推荐，国内网络更稳定）
-dsh plugin --profile web add dsh-settings-nav-organizer
+1. 把插件装进你的 profile：
 
-# 方式二：GitHub 仓库
-dsh plugin --profile web add github:zhengjy01/dsh-settings-nav-organizer
-```
+   ```sh
+   # 方式一：npm 包（推荐，国内网络更稳定）
+   dsh plugin --profile web add dsh-settings-nav-organizer
 
-安装后**重启 DSH**（宿主端需加载），再刷新浏览器页面，打开设置面板（侧边栏底部齿轮）即可。
+   # 方式二：GitHub 仓库
+   dsh plugin --profile web add github:zhengjy01/dsh-settings-nav-organizer
+   ```
+
+   **预期结果**：命令打印解析到的包名，并写进该 profile 的 `dsh.profile.bundles`。
+
+   > **截图位 1 —— 安装输出。** 怎么截：命令执行完立刻截终端最后约 10 行（包名 +
+   > profile）。要不要打码：出现用户名 / 家目录就打码。文件名建议
+   > `docs/images/dsh-settings-nav-organizer-1-install.png`。
+
+2. **重启 DSH**（宿主端需加载），再刷新浏览器页面。
+
+   **预期结果**：侧边栏导航仍是官方条目在最上，其下出现分组行。
+
+3. 打开设置面板（侧边栏底部齿轮）→ **分组管理**。
+
+   **预期结果**：折叠开关与分组管理界面都在。
+
+   > **截图位 2 —— 折叠后的导航 + 分组管理页。** 怎么截：侧边栏（插件入口折叠在
+   > `插件入口 (N) ▾` 行下）+ 分组管理页页头一起截。要不要打码：私密的插件名打码。
+   > 文件名建议 `docs/images/dsh-settings-nav-organizer-2-folded-nav.png`。
 
 ## 使用说明
 
 所有功能都在设置面板里：
 
 1. **折叠开关** —— 打开「分组管理」，顶部即是「折叠第三方插件入口」开关。开启（默认）：插件入口折叠为分组行；关闭：导航恢复原生平铺。开关状态重启后保持。
+
+   > **截图位 3 —— 开关两种状态。** 怎么截：开关开 / 关各一张侧边栏。文件名建议
+   > `docs/images/dsh-settings-nav-organizer-3-toggle.png`。
 
 2. **导航中的分组行** —— 开关开启时，导航依次显示核心项、自定义分组行、「插件入口 (N) ▾」行。点击任意行即可展开/收起其下方条目。「分组管理」入口位于导航最底部。
 
@@ -59,6 +80,18 @@ dsh plugin --profile web add github:zhengjy01/dsh-settings-nav-organizer
 3. 用 `data-snav-plugin` / `data-snav-group` 标记插件按钮，通过一小段样式表控制显隐（当前激活的 `aria-current` 行保持可见）；
 4. 用针对性 `MutationObserver`（带风暴看门狗）跟随台账变化与面板重渲染，插件增删时分组始终正确；
 样式、订阅、观察器与注入行全部挂在插件 fiber 上，停止或卸载插件时自动清理、完全还原。
+
+### 补图清单
+
+| # | 放在哪 | 展示什么 | 怎么截 | 建议文件名 |
+| --- | --- | --- | --- | --- |
+| 1 | 安装 | 安装命令输出（包名 + profile） | 第 1 步后立刻截终端最后约 10 行；家目录打码 | `docs/images/dsh-settings-nav-organizer-1-install.png` |
+| 2 | 安装 | 折叠后的导航 + 分组管理页 | 侧边栏（`插件入口 (N) ▾` 行）+ 分组管理页头 | `docs/images/dsh-settings-nav-organizer-2-folded-nav.png` |
+| 3 | 使用 | 折叠开关开 / 关 | 同一侧边栏两种状态 | `docs/images/dsh-settings-nav-organizer-3-toggle.png` |
+| 4 | 使用 | 自动分类结果 | 点「立即分类未分组插件」后的分组管理页 | `docs/images/dsh-settings-nav-organizer-4-classify.png` |
+
+补图后请重跑 `npm pack --dry-run` 与可移植性门禁（`npm run verify`）——README 属于
+发布物。
 
 ## 卸载
 
